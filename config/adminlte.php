@@ -307,13 +307,18 @@ return [
             'icon' => 'fas fa-fw fa-home',
         ],
         [
+            'text' => 'Kelola Informasi',
+            'url'  => 'kelolaInformasi',
+            'icon' => 'fas fa-fw fa-info',
+        ],
+        [
             'text' => 'Pendaftaran',
             'url'  => 'pendaftaran',
             'icon' => 'fas fa-fw fa-book',
         ],
         [
             'text' => 'Kelola Pendaftaran',
-            'url'  => 'kelolaPendaftaran',
+            'url'  => 'admin/kelolaPendaftaran',
             'icon' => 'fas fa-fw fa-book',
         ],
         [

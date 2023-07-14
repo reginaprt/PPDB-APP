@@ -11,7 +11,9 @@ class PendaftaranController extends Controller
     public function index() {
         $pendaftaran = Pendaftaran::All();
 
-        return view('pendaftaran', compact('pendaftaran'));
+        $jumlahData = Pendaftaran::count();
+
+        return view('pendaftaran', compact('pendaftaran','jumlahData'));
     }
 
     public function daftar(Request $req) {

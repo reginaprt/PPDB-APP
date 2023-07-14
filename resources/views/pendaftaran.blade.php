@@ -14,17 +14,17 @@ $params_id = null;
 <div class="container-fluid">
     <div class="card card-default">
         <div class="card-body">
+            @if($jumlahData == 0)
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                 Pendaftaran
             </button>
-            <hr>
+            @endif
             <table id="table-data" class="table table-bordered">
                 <thead>
                     {{-- Pendaftaran --}}
                 </thead>
             </table>
         </div>
-
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -35,10 +35,14 @@ $params_id = null;
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                    <form id="pendaftaran" name="pendaftaran" method="post" action="{{ route('create.daftar') }}" enctype="multipart/form-data">
+                    <div class="card-body">
+                    <form id="pendaftaran" name="pendaftaran" method="post" action="{{ route('pendaftaran') }}" enctype="multipart/form-data">
                         @csrf
                         <h5>Data Diri</h5>
+                        <div class="form-group">
+                            <label for="id">Nomor Pendaftaran</label>
+                            <input type="text" class="form-control" name="id" id="id" readonly/>
+                        </div>
                         <div class="form-group">
                             <label for="nama">Nama Lengkap</label>
                             <input type="text" class="form-control" name="nama" id="nama" required/>
@@ -265,7 +269,7 @@ $params_id = null;
                     @php $no=1; @endphp
                     @foreach($pendaftaran as $pendaftarans)
                         <tr>
-                            <td></td>
+                            <td>{{$pendaftarans->id}}</td>
                             <td>{{$pendaftarans->nama}}</td>
                             <td>{{$pendaftarans->tempat_Lahir}}</td>
                             <td>{{$pendaftarans->tanggal_Lahir}}</td>
@@ -345,7 +349,7 @@ $params_id = null;
     <script>
         
         // create
-        $(function() {})
+        $("#id").val(Math.floor(1000 + Math.random() * 9000))
 
         $('#saveBtn').click(function(e) {
             e.preventDefault();
