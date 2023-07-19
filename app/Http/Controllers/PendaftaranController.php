@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Pendaftaran;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PendaftaranController extends Controller
 {
     public function index() {
         $pendaftaran = Pendaftaran::All();
+        $user = Auth::user();
+        $test = $user->id;
+        $jumlahData = Pendaftaran::where('users_id', $test)->count();
+        $ambilData = Pendaftaran::where('users_id', $test)->get();
 
-        $jumlahData = Pendaftaran::count();
-
-        return view('pendaftaran', compact('pendaftaran','jumlahData'));
+        return view('pendaftaran', compact('pendaftaran','jumlahData','test','ambilData'));
     }
 
     public function daftar(Request $req) {

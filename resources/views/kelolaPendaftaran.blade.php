@@ -47,7 +47,7 @@
                             <td>
                                 <div class="btn-group" role="group" aria-lable="Basic example">
                                     <button type="button" id="btn-edit" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-id="{{ $pendaftarans->id }}">Edit</button>
-                                    <a type="btn btn-sm btn-danger btn-rounded" href="/kelolaPendaftaran/delete/{{$pendaftarans->id}}">Hapus</a>
+                                    <a type="btn btn-sm btn-danger btn-rounded" href="/admin/kelolaPendaftaran/delete/{{$pendaftarans->id}}">Hapus</a>
                                 </div>
                             </td>
                         </tr>
@@ -70,13 +70,13 @@
                 </button>
             </div>
         <div class="modal-body">
-            <form method="post" action="{{ route('editModal') }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('editPendaftaran') }}" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <h5>Data Diri</h5>
                 <div class="form-group">
                     <label for="id">Nomor Pendaftaran</label>
-                    <input type="text" class="form-control" name="id" id="id" readonly/>
+                    <input type="text" class="form-control" name="id" id="edit-id" readonly/>
                 </div>
                 <div class="form-group">
                     <label for="edit-nama">Nama Lengkap</label>
@@ -287,8 +287,6 @@
 
 @section('js')
     <script>
-        $("#id").val(Math.floor(1000 + Math.random() * 9000))
-
         $(function() {
             $(document).on('click', '#btn-edit', function(){
                 let id = $(this).data('id');

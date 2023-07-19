@@ -29,21 +29,27 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
+// Route Siswa -----------------------------------------------------------------------------------------------------------------------------
+Route::middleware('auth')->group(function () {
+
+    // Kelola Pendaftaran ------------------------------------------------------------------------------------------------------------------
+    Route::get('/pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran');
+    Route::post('/pendaftaran', [PendaftaranController::class, 'daftar'])->name('pendaftaran');
+
+});
+
+// Route Admin -----------------------------------------------------------------------------------------------------------------------------
 Route::middleware('is_admin')->group(function () {
 
     // Kelola Informasi --------------------------------------------------------------------------------------------------------------------
-    Route::get('/kelolaInformasi', [App\Http\Controllers\kelolaInformasiController::class, 'index'])->name('kelolaInformasi');
-
-    // Kelola Pendaftaran ------------------------------------------------------------------------------------------------------------------
-    Route::get('/pendaftaran', [App\Http\Controllers\PendaftaranController::class, 'index'])->name('pendaftaran');
-    Route::post('/pendaftaran', [App\Http\Controllers\PendaftaranController::class, 'daftar'])->name('pendaftaran');
+    Route::get('/kelolaInformasi', [kelolaInformasiController::class, 'index'])->name('kelolaInformasi');
 
     // Kelola Informasi --------------------------------------------------------------------------------------------------------------------
-    Route::patch('/kelolaPendaftaran', [App\Http\Controllers\kelolaPendaftaranController::class, 'edit'])->name('editModal');
-    Route::patch('admin/kelolaPendaftaran', [App\Http\Controllers\kelolaPendaftaranController::class, 'delete'])->name('delete');
-    Route::get('admin/kelolaPendaftaran', [App\Http\Controllers\kelolaPendaftaranController::class, 'index'])->name('kelolaPendaftaran');
-    Route::get('admin/ajaxadmin/dataPendaftar/{id}', [App\Http\Controllers\kelolaPendaftaranController::class, 'getDataPendaftar']);
+    Route::get('admin/kelolaPendaftaran', [kelolaPendaftaranController::class, 'index'])->name('kelolaPendaftaran');
+    Route::patch('admin/kelolaPendaftaran/edit', [kelolaPendaftaranController::class, 'edit'])->name('editPendaftaran');
+    Route::get('admin/kelolaPendaftaran/delete/{id}', [kelolaPendaftaranController::class,'delete'])->name('deletePendaftaran');
+    Route::get('admin/ajaxadmin/dataPendaftar/{id}', [kelolaPendaftaranController::class, 'getDataPendaftar']);
 
-    Route::get('/Laporan', [App\Http\Controllers\LaporanController::class, 'index'])->name('Laporan');
+    Route::get('/Laporan', [LaporanController::class, 'index'])->name('Laporan');
 
 });

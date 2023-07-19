@@ -39,6 +39,7 @@ $params_id = null;
                     <form id="pendaftaran" name="pendaftaran" method="post" action="{{ route('pendaftaran') }}" enctype="multipart/form-data">
                         @csrf
                         <h5>Data Diri</h5>
+                        <input type="text" class="form-control" name="users_id" id="users_id" value="{{ $test }}" hidden readonly/>
                         <div class="form-group">
                             <label for="id">Nomor Pendaftaran</label>
                             <input type="text" class="form-control" name="id" id="id" readonly/>
@@ -267,7 +268,7 @@ $params_id = null;
                 </thead>
                 <tbody>
                     @php $no=1; @endphp
-                    @foreach($pendaftaran as $pendaftarans)
+                    @foreach($ambilData as $pendaftarans)
                         <tr>
                             <td>{{$pendaftarans->id}}</td>
                             <td>{{$pendaftarans->nama}}</td>
@@ -300,7 +301,7 @@ $params_id = null;
                 </thead>
                 <tbody>
                     @php $no=1; @endphp
-                    @foreach($pendaftaran as $pendaftarans)
+                    @foreach($ambilData as $pendaftarans)
                         <tr>
                             <td>{{$pendaftarans->nama_Ayah}}</td>
                             <td>{{$pendaftarans->nik_Ayah}}</td>
@@ -326,7 +327,7 @@ $params_id = null;
                 </thead>
                 <tbody>
                     @php $no=1; @endphp
-                    @foreach($pendaftaran as $pendaftarans)
+                    @foreach($ambilData as $pendaftarans)
                         <tr>
                             <td>{{$pendaftarans->nama_Ibu}}</td>
                             <td>{{$pendaftarans->nik_Ibu}}</td>

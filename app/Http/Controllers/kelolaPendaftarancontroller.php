@@ -21,40 +21,40 @@ class kelolaPendaftarancontroller extends Controller
     public function edit(Request $req) {
         $kelolaPendaftaran = Pendaftaran::find($req->get('id'));
 
-        $validate = $req->validate([
-            'nama' => 'required',
-            'agama' => 'required',
-            'tempat_Lahir' => 'required',
-            'tanggal_Lahir' => 'required',
-            'jenis_Kelamin' => 'required',
-            'alamat' => 'required',
-            'kode_Pos' => 'required',
-            'berat_Badan' => 'required',
-            'tinggi_Badan' => 'required',
-            'anak_Keberapa' => 'required',
-            'kewarganegaraan' => 'required',
-            'berkebutuhan_Khusus' => 'required',
+        // $validate = $req->validate([
+        //     'nama' => 'required',
+        //     'agama' => 'required',
+        //     'tempat_Lahir' => 'required',
+        //     'tanggal_Lahir' => 'required',
+        //     'jenis_Kelamin' => 'required',
+        //     'alamat' => 'required',
+        //     'kode_Pos' => 'required',
+        //     'berat_Badan' => 'required',
+        //     'tinggi_Badan' => 'required',
+        //     'anak_Keberapa' => 'required',
+        //     'kewarganegaraan' => 'required',
+        //     'berkebutuhan_Khusus' => 'required',
 
-            'nama_Ayah' => 'required',
-            'nik_Ayah' => 'required',
-            'tahunLahir_Ayah' => 'required',
-            'pendidikan_Ayah' => 'required',
-            'pekerjaan_Ayah' => 'required',
-            'penghasilan_Ayah' => 'required',
+        //     'nama_Ayah' => 'required',
+        //     'nik_Ayah' => 'required',
+        //     'tahunLahir_Ayah' => 'required',
+        //     'pendidikan_Ayah' => 'required',
+        //     'pekerjaan_Ayah' => 'required',
+        //     'penghasilan_Ayah' => 'required',
 
-            'nama_Ibu' => 'required',
-            'nik_Ibu' => 'required',
-            'tahunLahir_Ibu' => 'required',
-            'pendidikan_Ibu' => 'required',
-            'pekerjaan_Ibu' => 'required',
-            'penghasilan_Ibu' => 'required',
-        ]);
+        //     'nama_Ibu' => 'required',
+        //     'nik_Ibu' => 'required',
+        //     'tahunLahir_Ibu' => 'required',
+        //     'pendidikan_Ibu' => 'required',
+        //     'pekerjaan_Ibu' => 'required',
+        //     'penghasilan_Ibu' => 'required',
+        // ]);
 
         $kelolaPendaftaran->nama = $req->get('nama');
         $kelolaPendaftaran->tanggal_Lahir = $req->get('tanggal_Lahir');
-        $kelolaPendaftaran->tahun_Lahir = $req->get('tahun_Lahir');
+        $kelolaPendaftaran->tempat_Lahir = $req->get('tempat_Lahir');
         $kelolaPendaftaran->agama = $req->get('agama');
-        $kelolaPendaftaran->jenis_Kelamin = $req->get('jenis_Kelamin');
+        $kelolaPendaftaran->jenis_Kelamin = $req->get('jenis_kelamin');
         $kelolaPendaftaran->alamat = $req->get('alamat');
         $kelolaPendaftaran->kode_Pos = $req->get('kode_Pos');
         $kelolaPendaftaran->berat_Badan = $req->get('berat_Badan');
@@ -92,7 +92,7 @@ class kelolaPendaftarancontroller extends Controller
 
         $pendaftaran->delete();
 
-        $notofication = array(
+        $notification = array(
             'message' => 'Data User berhasil dihapus',
             'alert-type' => 'success'
         );
