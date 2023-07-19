@@ -312,12 +312,12 @@ return [
             'icon' => 'fas fa-fw fa-book',
         ],
         ['header' => 'KELOLA PENDAFTARAN'],
-        [
-            'text' => 'Kelola Informasi',
-            'url'  => 'kelolaInformasi',
-            'icon' => 'fas fa-fw fa-info',
-            'roles_id' => 'User',
-        ],
+        // [
+        //     'text' => 'Kelola Informasi',
+        //     'url'  => 'kelolaInformasi',
+        //     'icon' => 'fas fa-fw fa-info',
+        //     'roles_id' => 'User',
+        // ],
         [
             'text' => 'Kelola Pendaftaran',
             'url'  => 'admin/kelolaPendaftaran',

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Laporan;
 use App\Models\Pendaftaran;
+use Illuminate\Http\Request;
 
 
 class kelolaPendaftarancontroller extends Controller
@@ -21,34 +22,34 @@ class kelolaPendaftarancontroller extends Controller
     public function edit(Request $req) {
         $kelolaPendaftaran = Pendaftaran::find($req->get('id'));
 
-        // $validate = $req->validate([
-        //     'nama' => 'required',
-        //     'agama' => 'required',
-        //     'tempat_Lahir' => 'required',
-        //     'tanggal_Lahir' => 'required',
-        //     'jenis_Kelamin' => 'required',
-        //     'alamat' => 'required',
-        //     'kode_Pos' => 'required',
-        //     'berat_Badan' => 'required',
-        //     'tinggi_Badan' => 'required',
-        //     'anak_Keberapa' => 'required',
-        //     'kewarganegaraan' => 'required',
-        //     'berkebutuhan_Khusus' => 'required',
+        $validate = $req->validate([
+            'nama' => 'required',
+            'agama' => 'required',
+            'tempat_Lahir' => 'required',
+            'tanggal_Lahir' => 'required',
+            'jenis_Kelamin' => 'required',
+            'alamat' => 'required',
+            'kode_Pos' => 'required',
+            'berat_Badan' => 'required',
+            'tinggi_Badan' => 'required',
+            'anak_Keberapa' => 'required',
+            'kewarganegaraan' => 'required',
+            'berkebutuhan_Khusus' => 'required',
 
-        //     'nama_Ayah' => 'required',
-        //     'nik_Ayah' => 'required',
-        //     'tahunLahir_Ayah' => 'required',
-        //     'pendidikan_Ayah' => 'required',
-        //     'pekerjaan_Ayah' => 'required',
-        //     'penghasilan_Ayah' => 'required',
+            'nama_Ayah' => 'required',
+            'nik_Ayah' => 'required',
+            'tahunLahir_Ayah' => 'required',
+            'pendidikan_Ayah' => 'required',
+            'pekerjaan_Ayah' => 'required',
+            'penghasilan_Ayah' => 'required',
 
-        //     'nama_Ibu' => 'required',
-        //     'nik_Ibu' => 'required',
-        //     'tahunLahir_Ibu' => 'required',
-        //     'pendidikan_Ibu' => 'required',
-        //     'pekerjaan_Ibu' => 'required',
-        //     'penghasilan_Ibu' => 'required',
-        // ]);
+            'nama_Ibu' => 'required',
+            'nik_Ibu' => 'required',
+            'tahunLahir_Ibu' => 'required',
+            'pendidikan_Ibu' => 'required',
+            'pekerjaan_Ibu' => 'required',
+            'penghasilan_Ibu' => 'required',
+        ]);
 
         $kelolaPendaftaran->nama = $req->get('nama');
         $kelolaPendaftaran->tanggal_Lahir = $req->get('tanggal_Lahir');
@@ -105,5 +106,107 @@ class kelolaPendaftarancontroller extends Controller
         $pendaftaran = Pendaftaran::find($id);
         // console.log($pendaftaran);
         return response()->json($pendaftaran);
+    }
+
+    public function terima($id){
+        $kelolaPendaftaran = Pendaftaran::find($id);
+
+        if ($kelolaPendaftaran->status == "Diproses"){
+
+            $kelolaPendaftaran->status = 'Lulus';
+            $kelolaPendaftaran->save();
+
+            $laporan = new Laporan;
+
+            $laporan->id_pendaftaran = $kelolaPendaftaran->id;
+            $laporan->users_id = $kelolaPendaftaran->users_id;
+            $laporan->nama = $kelolaPendaftaran->nama;
+            $laporan->tanggal_Lahir = $kelolaPendaftaran->tanggal_Lahir;
+            $laporan->tempat_Lahir = $kelolaPendaftaran->tempat_Lahir;
+            $laporan->agama = $kelolaPendaftaran->agama;
+            $laporan->jenis_Kelamin = $kelolaPendaftaran->jenis_Kelamin;
+            $laporan->alamat = $kelolaPendaftaran->alamat;
+            $laporan->kode_Pos = $kelolaPendaftaran->kode_Pos;
+            $laporan->berat_Badan = $kelolaPendaftaran->berat_Badan;
+            $laporan->tinggi_Badan = $kelolaPendaftaran->tinggi_Badan;
+            $laporan->anak_Keberapa = $kelolaPendaftaran->anak_Keberapa;
+            $laporan->kewarganegaraan = $kelolaPendaftaran->kewarganegaraan;
+            $laporan->berkebutuhan_Khusus = $kelolaPendaftaran->berkebutuhan_Khusus;
+
+            $laporan->nama_Ayah = $kelolaPendaftaran->nama_Ayah;
+            $laporan->nik_Ayah = $kelolaPendaftaran->nik_Ayah;
+            $laporan->tahunLahir_Ayah = $kelolaPendaftaran->tahunLahir_Ayah;
+            $laporan->pendidikan_Ayah = $kelolaPendaftaran->pendidikan_Ayah;
+            $laporan->pekerjaan_Ayah = $kelolaPendaftaran->pekerjaan_Ayah;
+            $laporan->penghasilan_Ayah = $kelolaPendaftaran->penghasilan_Ayah;
+
+            $laporan->nama_Ibu = $kelolaPendaftaran->nama_Ibu;
+            $laporan->nik_Ibu = $kelolaPendaftaran->nik_Ibu;
+            $laporan->tahunLahir_Ibu = $kelolaPendaftaran->tahunLahir_Ibu;
+            $laporan->pendidikan_Ibu = $kelolaPendaftaran->pendidikan_Ibu;
+            $laporan->pekerjaan_Ibu = $kelolaPendaftaran->pekerjaan_Ibu;
+            $laporan->penghasilan_Ibu = $kelolaPendaftaran->penghasilan_Ibu;
+            $laporan->status = "Lulus";
+
+            $laporan->save();
+        }
+
+        $kelolaPendaftaran->status = 'Lulus';
+        $kelolaPendaftaran->save();
+        $notification = array(
+            'message' => 'Data Pendaftar berhasil di Luluskan',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('kelolaPendaftaran')->with($notification);
+    }
+    public function tolak($id){
+        $kelolaPendaftaran = Pendaftaran::find($id);
+
+        if ($kelolaPendaftaran->status == "Diproses"){
+
+            $kelolaPendaftaran->status = 'Tidak Lulus';
+            $kelolaPendaftaran->save();
+
+            $laporan = new Laporan;
+
+            $laporan->id_pendaftaran = $kelolaPendaftaran->id;
+            $laporan->users_id = $kelolaPendaftaran->users_id;
+            $laporan->nama = $kelolaPendaftaran->nama;
+            $laporan->tanggal_Lahir = $kelolaPendaftaran->tanggal_Lahir;
+            $laporan->tempat_Lahir = $kelolaPendaftaran->tempat_Lahir;
+            $laporan->agama = $kelolaPendaftaran->agama;
+            $laporan->jenis_Kelamin = $kelolaPendaftaran->jenis_Kelamin;
+            $laporan->alamat = $kelolaPendaftaran->alamat;
+            $laporan->kode_Pos = $kelolaPendaftaran->kode_Pos;
+            $laporan->berat_Badan = $kelolaPendaftaran->berat_Badan;
+            $laporan->tinggi_Badan = $kelolaPendaftaran->tinggi_Badan;
+            $laporan->anak_Keberapa = $kelolaPendaftaran->anak_Keberapa;
+            $laporan->kewarganegaraan = $kelolaPendaftaran->kewarganegaraan;
+            $laporan->berkebutuhan_Khusus = $kelolaPendaftaran->berkebutuhan_Khusus;
+
+            $laporan->nama_Ayah = $kelolaPendaftaran->nama_Ayah;
+            $laporan->nik_Ayah = $kelolaPendaftaran->nik_Ayah;
+            $laporan->tahunLahir_Ayah = $kelolaPendaftaran->tahunLahir_Ayah;
+            $laporan->pendidikan_Ayah = $kelolaPendaftaran->pendidikan_Ayah;
+            $laporan->pekerjaan_Ayah = $kelolaPendaftaran->pekerjaan_Ayah;
+            $laporan->penghasilan_Ayah = $kelolaPendaftaran->penghasilan_Ayah;
+
+            $laporan->nama_Ibu = $kelolaPendaftaran->nama_Ibu;
+            $laporan->nik_Ibu = $kelolaPendaftaran->nik_Ibu;
+            $laporan->tahunLahir_Ibu = $kelolaPendaftaran->tahunLahir_Ibu;
+            $laporan->pendidikan_Ibu = $kelolaPendaftaran->pendidikan_Ibu;
+            $laporan->pekerjaan_Ibu = $kelolaPendaftaran->pekerjaan_Ibu;
+            $laporan->penghasilan_Ibu = $kelolaPendaftaran->penghasilan_Ibu;
+
+            $laporan->status = "Tidak Lulus";
+
+            $laporan->save();
+        }
+
+        $notification = array(
+            'message' => 'Data Pendaftar berhasil di Tolak',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('kelolaPendaftaran')->with($notification);
     }
 }

@@ -13,17 +13,145 @@ $params_id = null;
 
 <div class="container-fluid">
     <div class="card card-default">
-        <div class="card-body">
-            @if($jumlahData == 0)
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Pendaftaran
-            </button>
+        <div class="d-flex">
+            <div class="card-body col-md-6">
+                @if($jumlahData == 0)
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Daftar
+                    </button>
+                @endif
+                @if($jumlahData == 1)
+                <h3 class="m-1 mb-3" >Identitas Siswa</h3>
+                <div class="table-responsive">
+                    @foreach($ambilData as $pendaftarans)
+                    <table id="table-data" class="table table-striped">
+                        <tr>
+                            <td>No Pendaftaran</td>
+                            <td>{{$pendaftarans->id}}</td>
+                        </tr>
+                        <tr>
+                            <td>Nama</td>
+                            <td>{{$pendaftarans->nama}}</td>
+                        </tr>
+                        <tr>
+                            <td>Tempat Lahir</td>
+                            <td>{{$pendaftarans->tempat_Lahir}}</td>
+                        </tr>
+                        <tr>
+                            <td>Tanggal Lahir</td>
+                            <td>{{$pendaftarans->tanggal_Lahir}}</td>
+                        </tr>
+                        <tr>
+                            <td>Agama</td>
+                            <td>{{$pendaftarans->agama}}</td>
+                        </tr>
+                        <tr>
+                            <td>Kewarganegaraan</td>
+                            <td>{{$pendaftarans->kewarganegaraan}}</td>
+                        </tr>
+                    </table>
+                    @endforeach
+                </div>
+            </div>
+            <div class="card-body col-md-6">
+                <h3 class="m-1 mb-3" >Data Lainnya</h3>
+                <div class="table-responsive">
+                    @foreach($ambilData as $pendaftarans)
+                    <table id="table-data" class="table table-striped">
+                        <tr>
+                            <td>Berat Badan</td>
+                            <td>{{$pendaftarans->berat_Badan}}</td>
+                        </tr>
+                        <tr>
+                            <td>Tinggi Badan</td>
+                            <td>{{$pendaftarans->tinggi_Badan}}</td>
+                        </tr>
+                        <tr>
+                            <td>Anak Ke</td>
+                            <td>{{$pendaftarans->anak_Keberapa}}</td>
+                        </tr>
+                        <tr>
+                            <td>Kode Pos</td>
+                            <td>{{$pendaftarans->kode_Pos}}</td>
+                        </tr>
+                        <tr>
+                            <td>Berkebutuhan Khusus</td>
+                            <td>{{$pendaftarans->berkebutuhan_Khusus}}</td>
+                        </tr>
+                    </table>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="card-body col-md-6">
+                <h3 class="m-1 mb-3" >Data Ayah</h3>
+                <div class="table-responsive">
+                    @foreach($ambilData as $pendaftarans)
+                    <table id="table-data" class="table table-striped">
+                        <tr>
+                            <td>Nama</td>
+                            <td>{{$pendaftarans->nama_Ayah}}</td>
+                        </tr>
+                        <tr>
+                            <td>NIK</td>
+                            <td>{{$pendaftarans->nik_Ayah}}</td>
+                        </tr>
+                        <tr>
+                            <td>Tahun Lahir</td>
+                            <td>{{$pendaftarans->tahunLahir_Ayah}}</td>
+                        </tr>
+                        <tr>
+                            <td>Pendidikan</td>
+                            <td>{{$pendaftarans->pendidikan_Ayah}}</td>
+                        </tr>
+                        <tr>
+                            <td>Pekerjaan</td>
+                            <td>{{$pendaftarans->pekerjaan_Ayah}}</td>
+                        </tr>
+                        <tr>
+                            <td>Penghasilan</td>
+                            <td>{{$pendaftarans->penghasilan_Ayah}}</td>
+                        </tr>
+                    </table>
+                    @endforeach
+                </div>
+            </div>
+            <div class="card-body col-md-6">
+                <h3 class="m-1 mb-3" >Data Ibu</h3>
+                <div class="table-responsive">
+                    @foreach($ambilData as $pendaftarans)
+                    <table id="table-data" class="table table-striped">
+                        <tr>
+                            <td>Nama</td>
+                            <td>{{$pendaftarans->nama_Ibu}}</td>
+                        </tr>
+                        <tr>
+                            <td>NIK</td>
+                            <td>{{$pendaftarans->nik_Ibu}}</td>
+                        </tr>
+                        <tr>
+                            <td>Tahun Lahir</td>
+                            <td>{{$pendaftarans->tahunLahir_Ibu}}</td>
+                        </tr>
+                        <tr>
+                            <td>Pendidikan</td>
+                            <td>{{$pendaftarans->pendidikan_Ibu}}</td>
+                        </tr>
+                        <tr>
+                            <td>Pekerjaan</td>
+                            <td>{{$pendaftarans->pekerjaan_Ibu}}</td>
+                        </tr>
+                        <tr>
+                            <td>Penghasilan</td>
+                            <td>{{$pendaftarans->penghasilan_Ibu}}</td>
+                        </tr>
+                    </table>
+                    @endforeach
+                </div>
+            </div>
             @endif
-            <table id="table-data" class="table table-bordered">
-                <thead>
-                    {{-- Pendaftaran --}}
-                </thead>
-            </table>
         </div>
 
         <!-- Modal -->
@@ -68,7 +196,7 @@ $params_id = null;
                                     <option value="budha">Budha</option>
                                     <option value="hindu">Hindu</option>
                                     <option value="konghucu">Konghucu</option>
-                                </select>                            
+                                </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="jenis_kelamin">Jenis Kelamin</label>
@@ -76,7 +204,7 @@ $params_id = null;
                                     <option value=""></option>
                                     <option value="laki-laki">Laki - Laki</option>
                                     <option value="perempuan">Perempuan</option>
-                                </select>                                            
+                                </select>
                             </div>
                         </div>
                         <div class="row">
@@ -117,7 +245,7 @@ $params_id = null;
                                     <option value=""></option>
                                     <option value="ya">Ya</option>
                                     <option value="tidak">Tidak</option>
-                                </select>                        
+                                </select>
                             </div>
                         </div>
                         <br>
@@ -164,7 +292,7 @@ $params_id = null;
                                     <option value="s1">S1</option>
                                     <option value="s2">S2</option>
                                     <option value="s3">S3</option>
-                                </select>                             
+                                </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="pendidikan_Ibu">Pendidikan Terakhir Ibu</label>
@@ -176,7 +304,7 @@ $params_id = null;
                                     <option value="s1">S1</option>
                                     <option value="s2">S2</option>
                                     <option value="s3">S3</option>
-                                </select>                             
+                                </select>
                             </div>
                         </div>
                         <div class="row">
@@ -193,7 +321,7 @@ $params_id = null;
                                     <option value="wirausaha">Wirausaha</option>
                                     <option value="pns/tni/porli">PNS/TNI/Porli</option>
                                     <option value="pensiunan">Pensiunan</option>
-                                </select>                            
+                                </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="pekerjaan_Ibu">Pekerjaan Ibu</label>
@@ -208,7 +336,7 @@ $params_id = null;
                                     <option value="wirausaha">Wirausaha</option>
                                     <option value="pns/tni/porli">PNS/TNI/Porli</option>
                                     <option value="pensiunan">Pensiunan</option>
-                                </select>                             
+                                </select>
                             </div>
                         </div>
                         <div class="row">
@@ -222,7 +350,7 @@ $params_id = null;
                                     <option value=".000.000 - 4.000.000">3.000.000 - 4.000.000</option>
                                     <option value="4.000.000 - 5.000.000">4.000.000 - 5.000.000</option>
                                     <option value="Diatas 5.000.000">Diatas 5.000.000</option>
-                                </select>                             
+                                </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="penghasilan_Ibu">Penghasilan Ibu</label>
@@ -234,7 +362,7 @@ $params_id = null;
                                     <option value=".000.000 - 4.000.000">3.000.000 - 4.000.000</option>
                                     <option value="4.000.000 - 5.000.000">4.000.000 - 5.000.000</option>
                                     <option value="Diatas 5.000.000">Diatas 5.000.000</option>
-                                </select>                             
+                                </select>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -247,108 +375,11 @@ $params_id = null;
             </div>
         </div>
 
-        <!-- Data Diri -->
-        <div class="card-body">
-            <h3>Data Diri</h3>
-            <table class="table table-striped table-bordered text-center    ">
-                <thead>
-                    <th >No Pendaftaran</th>
-                    <th >Nama</th>
-                    <th>Tempat Lahir</th>
-                    <th>Tanggal Lahir</th>
-                    <th>Agama</th>
-                    <th>Jenis Kelamin</th>
-                    <th>Alamat</th>
-                    <th>Kode Pos</th>
-                    <th>Berat Badan</th>
-                    <th>Tinggi Badan</th>
-                    <th>Anak Ke</th>
-                    <th>Kewarganegaraan</th>
-                    <th>Berkebutuhan Khusus</th>
-                </thead>
-                <tbody>
-                    @php $no=1; @endphp
-                    @foreach($ambilData as $pendaftarans)
-                        <tr>
-                            <td>{{$pendaftarans->id}}</td>
-                            <td>{{$pendaftarans->nama}}</td>
-                            <td>{{$pendaftarans->tempat_Lahir}}</td>
-                            <td>{{$pendaftarans->tanggal_Lahir}}</td>
-                            <td>{{$pendaftarans->agama}}</td>
-                            <td>{{$pendaftarans->jenis_Kelamin}}</td>
-                            <td>{{$pendaftarans->alamat}}</td>
-                            <td>{{$pendaftarans->kode_Pos}}</td>
-                            <td>{{$pendaftarans->berat_Badan}}</td>
-                            <td>{{$pendaftarans->tinggi_Badan}}</td>
-                            <td>{{$pendaftarans->anak_Keberapa}}</td>
-                            <td>{{$pendaftarans->kewarganegaraan}}</td>
-                            <td>{{$pendaftarans->berkebutuhan_Khusus}}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            <br>
-            <!-- Data Ayah -->
-            <h3>Data Ayah</h3>
-            <table class="table table-striped table-bordered text-center ">
-                <thead>
-                    <th>Nama Ayah</th>
-                    <th>NIK Ayah</th>
-                    <th>Tahun Lahir Ayah</th>
-                    <th>Pendidikan Ayah</th>
-                    <th>Pekerjaan Ayah</th>
-                    <th>Penghasilan Ayah</th>
-                </thead>
-                <tbody>
-                    @php $no=1; @endphp
-                    @foreach($ambilData as $pendaftarans)
-                        <tr>
-                            <td>{{$pendaftarans->nama_Ayah}}</td>
-                            <td>{{$pendaftarans->nik_Ayah}}</td>
-                            <td>{{$pendaftarans->tahunLahir_Ayah}}</td>
-                            <td>{{$pendaftarans->pendidikan_Ayah}}</td>
-                            <td>{{$pendaftarans->pekerjaan_Ayah}}</td>
-                            <td>{{$pendaftarans->penghasilan_Ayah}}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            <br>
-            <!-- Data Ibu -->
-            <h3>Data Ibu</h3>
-            <table class="table table-striped table-bordered text-center ">
-                <thead>
-                    <th>Nama Ibu</th>
-                    <th>NIK Ibu</th>
-                    <th>Tahun Lahir Ibu</th>
-                    <th>Pendidikan Ibu</th>
-                    <th>Pekerjaan Ibu</th>
-                    <th>Penghasilan Ibu</th>
-                </thead>
-                <tbody>
-                    @php $no=1; @endphp
-                    @foreach($ambilData as $pendaftarans)
-                        <tr>
-                            <td>{{$pendaftarans->nama_Ibu}}</td>
-                            <td>{{$pendaftarans->nik_Ibu}}</td>
-                            <td>{{$pendaftarans->tahunLahir_Ibu}}</td>
-                            <td>{{$pendaftarans->pendidikan_Ibu}}</td>
-                            <td>{{$pendaftarans->pekerjaan_Ibu}}</td>
-                            <td>{{$pendaftarans->penghasilan_Ibu}}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            <br>
-        </div>     
-    </div>
-</div>
-
 @endsection
 
 @push('js')
     <script>
-        
+
         // create
         $("#id").val(Math.floor(1000 + Math.random() * 9000))
 

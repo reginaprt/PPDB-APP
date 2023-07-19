@@ -10,7 +10,7 @@ use App\Models\Pendaftaran;
 class LaporanController extends Controller
 {
     public function index() {
-        $Laporan = Pendaftaran::All();
+        $Laporan = Laporan::All();
 
         return view('Laporan', compact('Laporan'));
     }

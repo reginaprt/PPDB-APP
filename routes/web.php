@@ -44,11 +44,15 @@ Route::middleware('is_admin')->group(function () {
     // Kelola Informasi --------------------------------------------------------------------------------------------------------------------
     Route::get('/kelolaInformasi', [kelolaInformasiController::class, 'index'])->name('kelolaInformasi');
 
-    // Kelola Informasi --------------------------------------------------------------------------------------------------------------------
+    // Kelola Pendaftaran ------------------------------------------------------------------------------------------------------------------
     Route::get('admin/kelolaPendaftaran', [kelolaPendaftaranController::class, 'index'])->name('kelolaPendaftaran');
     Route::patch('admin/kelolaPendaftaran/edit', [kelolaPendaftaranController::class, 'edit'])->name('editPendaftaran');
     Route::get('admin/kelolaPendaftaran/delete/{id}', [kelolaPendaftaranController::class,'delete'])->name('deletePendaftaran');
     Route::get('admin/ajaxadmin/dataPendaftar/{id}', [kelolaPendaftaranController::class, 'getDataPendaftar']);
+
+    // Verifikasi Pendaftaran --------------------------------------------------------------------------------------------------------------
+    Route::get('admin/kelolaPendaftaran/terima/{id}', [kelolaPendaftaranController::class,'terima'])->name('terimaPendaftaran');
+    Route::get('admin/kelolaPendaftaran/tolak/{id}', [kelolaPendaftaranController::class,'tolak'])->name('tolakPendaftaran');
 
     Route::get('/Laporan', [LaporanController::class, 'index'])->name('Laporan');
 

@@ -11,23 +11,19 @@
 <div class="container-fluid">
     <div class="card card-default">
         <div class="card-body">
-            <table id="table-data" class="table table-bordered">
-                <thead>
-                    {{-- Kelola Pendaftaran --}}
-                </thead>
-            </table>
-
             <h3>Pendaftaran Siswa Baru SDN Simpang 2</h3>
-            <table class="table table-striped table-bordered text-center justify-content-center">
+            <br>
+            <table class="table table-striped text-center justify-content-center">
                 <thead>
                     <th>No</th>
-                    <th>Nomor Pendaftaran</th>
+                    <th>No. Pendaftaran</th>
                     <th>Nama</th>
                     <th>Tanggal Lahir</th>
                     <th>Agama</th>
                     <th>Jenis Kelamin</th>
                     <th>Alamat</th>
                     <th>Status</th>
+                    <th>Verifikasi</th>
                     <th>Aksi</th>
                 </thead>
                 <tbody>
@@ -42,12 +38,26 @@
                             <td>{{$pendaftarans->jenis_Kelamin}}</td>
                             <td>{{$pendaftarans->alamat}}</td>
                             <td>
-                                <a href="">Verifikasi</a>
+                                @if ($pendaftarans->status == 'Diproses')
+                                    <a class="btn btn-warning">{{$pendaftarans->status}}</a>
+                                @endif
+                                @if ($pendaftarans->status == 'Lulus')
+                                    <a class="btn btn-success">{{$pendaftarans->status}}</a>
+                                @endif
+                                @if ($pendaftarans->status == 'Tidak Lulus')
+                                    <a class="btn btn-danger">{{$pendaftarans->status}}</a>
+                                @endif
                             </td>
                             <td>
                                 <div class="btn-group" role="group" aria-lable="Basic example">
-                                    <button type="button" id="btn-edit" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-id="{{ $pendaftarans->id }}">Edit</button>
-                                    <a type="btn btn-sm btn-danger btn-rounded" href="/admin/kelolaPendaftaran/delete/{{$pendaftarans->id}}">Hapus</a>
+                                    <a type="button" class="btn btn-success" href="/admin/kelolaPendaftaran/terima/{{$pendaftarans->id}}">Terima</a>
+                                    <a type="button" class="btn btn-danger" href="/admin/kelolaPendaftaran/tolak/{{$pendaftarans->id}}">Tolak</a>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="btn-group" role="group" aria-lable="Basic example">
+                                    <button type="button" id="btn-edit" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" data-id="{{ $pendaftarans->id }}">Lihat</button>
+                                    <a type="btn btn-sm btn-danger btn-rounded" class="btn btn-danger" href="/admin/kelolaPendaftaran/delete/{{$pendaftarans->id}}">Hapus</a>
                                 </div>
                             </td>
                         </tr>
@@ -73,7 +83,14 @@
             <form method="post" action="{{ route('editPendaftaran') }}" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
-                <h5>Data Diri</h5>
+                <div class="d-flex justify-content-between">
+                    {{-- <h3>Pendaftaran Siswa Baru SDN Simpang 2</h3> --}}
+                    <h3>Data Diri</h3>
+                    <div class="d-flex m-1">
+                        <a type="button" class="btn btn-success m-1" href="#">Export Excel</a>
+                        <a type="button" class="btn btn-danger m-1" href="#">Export PDF</a>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="id">Nomor Pendaftaran</label>
                     <input type="text" class="form-control" name="id" id="edit-id" readonly/>
@@ -102,7 +119,7 @@
                             <option value="budha">Budha</option>
                             <option value="hindu">Hindu</option>
                             <option value="konghucu">Konghucu</option>
-                        </select>                            
+                        </select>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="edit-jenis_kelamin">Jenis Kelamin</label>
@@ -110,7 +127,7 @@
                             <option value=""></option>
                             <option value="laki-laki">Laki - Laki</option>
                             <option value="perempuan">Perempuan</option>
-                        </select>                                            
+                        </select>
                     </div>
                 </div>
                 <div class="row">
@@ -144,7 +161,7 @@
                             <option value=""></option>
                             <option value="wni">WNI</option>
                             <option value="wna">WNA</option>
-                        </select>                        
+                        </select>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="edit-berkebutuhan_Khusus">Berkebutuhan Khusus</label>
@@ -152,7 +169,7 @@
                             <option value=""></option>
                             <option value="ya">Ya</option>
                             <option value="tidak">Tidak</option>
-                        </select>                        
+                        </select>
                     </div>
                 </div>
                 <br>
@@ -199,7 +216,7 @@
                             <option value="s1">S1</option>
                             <option value="s2">S2</option>
                             <option value="s3">S3</option>
-                        </select>                             
+                        </select>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="edit-pendidikan_Ibu">Pendidikan Terakhir Ibu</label>
@@ -211,7 +228,7 @@
                             <option value="s1">S1</option>
                             <option value="s2">S2</option>
                             <option value="s3">S3</option>
-                        </select>                             
+                        </select>
                     </div>
                 </div>
                 <div class="row">
@@ -228,7 +245,7 @@
                             <option value="wirausaha">Wirausaha</option>
                             <option value="pns/tni/porli">PNS/TNI/Porli</option>
                             <option value="pensiunan">Pensiunan</option>
-                        </select>                            
+                        </select>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="edit-pekerjaan_Ibu">Pekerjaan Ibu</label>
@@ -243,7 +260,7 @@
                             <option value="wirausaha">Wirausaha</option>
                             <option value="pns/tni/porli">PNS/TNI/Porli</option>
                             <option value="pensiunan">Pensiunan</option>
-                        </select>                             
+                        </select>
                     </div>
                 </div>
                 <div class="row">
@@ -257,7 +274,7 @@
                             <option value=".000.000 - 4.000.000">3.000.000 - 4.000.000</option>
                             <option value="4.000.000 - 5.000.000">4.000.000 - 5.000.000</option>
                             <option value="Diatas 5.000.000">Diatas 5.000.000</option>
-                        </select>                             
+                        </select>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="edit-penghasilan_Ibu">Penghasilan Ibu</label>
@@ -269,12 +286,12 @@
                             <option value=".000.000 - 4.000.000">3.000.000 - 4.000.000</option>
                             <option value="4.000.000 - 5.000.000">4.000.000 - 5.000.000</option>
                             <option value="Diatas 5.000.000">Diatas 5.000.000</option>
-                        </select>                             
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary">Edit Data</button>
                 </div>
             </form>
         </div>

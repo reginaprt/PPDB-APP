@@ -41,6 +41,7 @@ class CreatePendaftaransTable extends Migration
             $table->string('pendidikan_Ibu');
             $table->string('pekerjaan_Ibu');
             $table->string('penghasilan_Ibu');
+            $table->string('status')->default('Diproses');
             $table->foreignId('users_id')->constrained();
             $table->timestamps();
         });
