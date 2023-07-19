@@ -98,7 +98,7 @@ class kelolaPendaftarancontroller extends Controller
         );
 
         return redirect()->route('kelolaPendaftaran')->with($notification);
-        
+
     }
 
     public function getDataPendaftar($id){
