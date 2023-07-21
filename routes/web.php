@@ -54,6 +54,10 @@ Route::middleware('is_admin')->group(function () {
     Route::get('admin/kelolaPendaftaran/terima/{id}', [kelolaPendaftaranController::class,'terima'])->name('terimaPendaftaran');
     Route::get('admin/kelolaPendaftaran/tolak/{id}', [kelolaPendaftaranController::class,'tolak'])->name('tolakPendaftaran');
 
+    // Export Data Pendaftaran -------------------------------------------------------------------------------------------------------------
+    Route::get('/admin/kelolaPendaftaran/export/{id}', [kelolaPendaftaranController::class, 'exportPendaftaran'])->name('export.pendaftaran.pdf');
+
+    // Laporan Pendaftaran -----------------------------------------------------------------------------------------------------------------
     Route::get('/Laporan', [LaporanController::class, 'index'])->name('Laporan');
 
 });

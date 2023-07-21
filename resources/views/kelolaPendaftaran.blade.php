@@ -25,6 +25,7 @@
                     <th>Status</th>
                     <th>Verifikasi</th>
                     <th>Aksi</th>
+                    <th>Export</th>
                 </thead>
                 <tbody>
                     @php $no=1; @endphp
@@ -60,6 +61,12 @@
                                     <a type="btn btn-sm btn-danger btn-rounded" class="btn btn-danger" href="/admin/kelolaPendaftaran/delete/{{$pendaftarans->id}}">Hapus</a>
                                 </div>
                             </td>
+                            @foreach ($kelolaPendaftaran as $export)
+                            <td class="btn-group">
+                                <a type="button" class="btn btn-success" href="#">Excel</a>
+                                <a type="button" class="btn btn-danger" href="/admin/kelolaPendaftaran/export/{{$pendaftarans->id}}">PDF</a>
+                            </td>
+                            @endforeach
                         </tr>
                     @endforeach
                 </tbody>
@@ -86,10 +93,6 @@
                 <div class="d-flex justify-content-between">
                     {{-- <h3>Pendaftaran Siswa Baru SDN Simpang 2</h3> --}}
                     <h3>Data Diri</h3>
-                    <div class="d-flex m-1">
-                        <a type="button" class="btn btn-success m-1" href="#">Export Excel</a>
-                        <a type="button" class="btn btn-danger m-1" href="#">Export PDF</a>
-                    </div>
                 </div>
                 <div class="form-group">
                     <label for="id">Nomor Pendaftaran</label>

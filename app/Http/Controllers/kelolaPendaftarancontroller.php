@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Laporan;
+use PDF;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class kelolaPendaftarancontroller extends Controller
@@ -208,5 +210,12 @@ class kelolaPendaftarancontroller extends Controller
             'alert-type' => 'success'
         );
         return redirect()->route('kelolaPendaftaran')->with($notification);
+    }
+
+    public function exportPendaftaran($id){
+        $pendaftaran = Pendaftaran::findOrFail($id);
+        view()->share('pendaftaran', $pendaftaran);
+        $pdf = PDF::loadview('export.pendaftaran');
+        return $pdf->download('data_pendaftaran.pdf');
     }
 }
