@@ -14,7 +14,7 @@
                 <h3>Pendaftaran Siswa Baru SDN Simpang 2</h3>
                 <div class="d-flex m-1">
                     <a type="button" class="btn btn-success m-1" href="#">Export Excel</a>
-                    <a type="button" class="btn btn-danger m-1" href="#">Export PDF</a>
+                    <a type="button" class="btn btn-danger m-1" href="/laporan/export">Export PDF</a>
                 </div>
             </div>
 

@@ -59,5 +59,6 @@ Route::middleware('is_admin')->group(function () {
 
     // Laporan Pendaftaran -----------------------------------------------------------------------------------------------------------------
     Route::get('/Laporan', [LaporanController::class, 'index'])->name('Laporan');
+    Route::get('/laporan/export', [LaporanController::class, 'exportLaporan']);
 
 });

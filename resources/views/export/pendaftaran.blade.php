@@ -127,6 +127,16 @@
                   </table>
               </div>
           </div>
+          <div class="card-body col-md-6">
+            <h3 class="m-1 mb-3" >Status</h3>
+            <div class="table-responsive">
+                <table id="table-data" class="table table-striped">
+                    <tr>
+                        <td>{{$pendaftaran->status}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
       </div>
 </body>
 </html>
