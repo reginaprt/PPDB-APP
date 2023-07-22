@@ -40,31 +40,31 @@
                             <td>{{$pendaftarans->alamat}}</td>
                             <td>
                                 @if ($pendaftarans->status == 'Diproses')
-                                    <a class="btn btn-warning">{{$pendaftarans->status}}</a>
+                                    <a class="btn btn-sm btn-warning">{{$pendaftarans->status}}</a>
                                 @endif
                                 @if ($pendaftarans->status == 'Lulus')
-                                    <a class="btn btn-success">{{$pendaftarans->status}}</a>
+                                    <a class="btn btn-sm btn-success">{{$pendaftarans->status}}</a>
                                 @endif
                                 @if ($pendaftarans->status == 'Tidak Lulus')
-                                    <a class="btn btn-danger">{{$pendaftarans->status}}</a>
+                                    <a class="btn btn-sm btn-danger">{{$pendaftarans->status}}</a>
                                 @endif
                             </td>
                             <td>
                                 <div class="btn-group" role="group" aria-lable="Basic example">
-                                    <a type="button" class="btn btn-success" href="/admin/kelolaPendaftaran/terima/{{$pendaftarans->id}}">Terima</a>
-                                    <a type="button" class="btn btn-danger" href="/admin/kelolaPendaftaran/tolak/{{$pendaftarans->id}}">Tolak</a>
+                                    <a type="button" class="btn btn-sm btn-success" href="/admin/kelolaPendaftaran/terima/{{$pendaftarans->id}}">Terima</a>
+                                    <a type="button" class="btn btn-sm btn-danger" href="/admin/kelolaPendaftaran/tolak/{{$pendaftarans->id}}">Tolak</a>
                                 </div>
                             </td>
                             <td>
                                 <div class="btn-group" role="group" aria-lable="Basic example">
-                                    <button type="button" id="btn-edit" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" data-id="{{ $pendaftarans->id }}">Lihat</button>
-                                    <a type="btn btn-sm btn-danger btn-rounded" class="btn btn-danger" href="/admin/kelolaPendaftaran/delete/{{$pendaftarans->id}}">Hapus</a>
+                                    <button type="button" id="btn-edit" class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModal" data-id="{{ $pendaftarans->id }}">Lihat</button>
+                                    <a type="btn btn-sm btn-danger btn-rounded" class="btn btn-sm btn-danger" href="/admin/kelolaPendaftaran/delete/{{$pendaftarans->id}}">Hapus</a>
                                 </div>
                             </td>
                             @foreach ($kelolaPendaftaran as $export)
                             <td class="btn-group">
-                                <a type="button" class="btn btn-success" href="#">Excel</a>
-                                <a type="button" class="btn btn-danger" href="/admin/kelolaPendaftaran/export/{{$pendaftarans->id}}">PDF</a>
+                                <a type="button" class="btn btn-sm btn-success" href="#">Excel</a>
+                                <a type="button" class="btn btn-sm btn-danger" href="/admin/kelolaPendaftaran/export/{{$pendaftarans->id}}">PDF</a>
                             </td>
                             @endforeach
                         </tr>
