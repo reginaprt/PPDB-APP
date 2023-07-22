@@ -51,8 +51,62 @@ class PendaftaranController extends Controller
             'penghasilan_Ibu' => 'required',
         ]);
 
-        Pendaftaran::create($req->all());
+        $pendaftaran = new Pendaftaran;
 
+        $pendaftaran->users_id = $req->get('users_id');
+        $pendaftaran->nama = $req->get('nama');
+        $pendaftaran->tanggal_Lahir = $req->get('tanggal_Lahir');
+        $pendaftaran->tempat_Lahir = $req->get('tempat_Lahir');
+        $pendaftaran->agama = $req->get('agama');
+        $pendaftaran->jenis_Kelamin = $req->get('jenis_kelamin');
+        $pendaftaran->alamat = $req->get('alamat');
+        $pendaftaran->kode_Pos = $req->get('kode_Pos');
+        $pendaftaran->berat_Badan = $req->get('berat_Badan');
+        $pendaftaran->tinggi_Badan = $req->get('tinggi_Badan');
+        $pendaftaran->anak_Keberapa = $req->get('anak_Keberapa');
+        $pendaftaran->kewarganegaraan = $req->get('kewarganegaraan');
+        $pendaftaran->berkebutuhan_Khusus = $req->get('berkebutuhan_Khusus');
+
+        $pendaftaran->nama_Ayah = $req->get('nama_Ayah');
+        $pendaftaran->nik_Ayah = $req->get('nik_Ayah');
+        $pendaftaran->tahunLahir_Ayah = $req->get('tahunLahir_Ayah');
+        $pendaftaran->pendidikan_Ayah = $req->get('pendidikan_Ayah');
+        $pendaftaran->pekerjaan_Ayah = $req->get('pekerjaan_Ayah');
+        $pendaftaran->penghasilan_Ayah = $req->get('penghasilan_Ayah');
+
+        $pendaftaran->nama_Ibu = $req->get('nama_Ibu');
+        $pendaftaran->nik_Ibu = $req->get('nik_Ibu');
+        $pendaftaran->tahunLahir_Ibu = $req->get('tahunLahir_Ibu');
+        $pendaftaran->pendidikan_Ibu = $req->get('pendidikan_Ibu');
+        $pendaftaran->pekerjaan_Ibu = $req->get('pekerjaan_Ibu');
+        $pendaftaran->penghasilan_Ibu = $req->get('penghasilan_Ibu');
+
+        if($req->hasFile('ijazah')){
+            $extension = $req->file('ijazah')->extension();
+            $filename = 'ijazah_pendaftar'.time().'.'. $extension;
+            $req->file('ijazah')->storeAs('public/ijazah_pendaftar', $filename);
+            $pendaftaran->ijazah = $filename;
+        }
+        if($req->hasFile('akta')){
+            $extension = $req->file('akta')->extension();
+            $filename = 'akta_pendaftar'.time().'.'. $extension;
+            $req->file('akta')->storeAs('public/akta_pendaftar', $filename);
+            $pendaftaran->akta = $filename;
+        }
+        if($req->hasFile('kk')){
+            $extension = $req->file('kk')->extension();
+            $filename = 'kk_pendaftar'.time().'.'. $extension;
+            $req->file('kk')->storeAs('public/kk_pendaftar', $filename);
+            $pendaftaran->kk = $filename;
+        }
+        if($req->hasFile('paspoto')){
+            $extension = $req->file('paspoto')->extension();
+            $filename = 'paspoto_pendaftar'.time().'.'. $extension;
+            $req->file('paspoto')->storeAs('public/paspoto_pendaftar', $filename);
+            $pendaftaran->paspoto = $filename;
+        }
+
+        $pendaftaran->save();
 
         $laporan = new Laporan;
 
@@ -84,6 +138,31 @@ class PendaftaranController extends Controller
         $laporan->pendidikan_Ibu = $req->get('pendidikan_Ibu');
         $laporan->pekerjaan_Ibu = $req->get('pekerjaan_Ibu');
         $laporan->penghasilan_Ibu = $req->get('penghasilan_Ibu');
+
+        if($req->hasFile('ijazah')){
+            $extension = $req->file('ijazah')->extension();
+            $filename = 'ijazah_laporan'.time().'.'. $extension;
+            $req->file('ijazah')->storeAs('public/ijazah_laporan', $filename);
+            $laporan->ijazah = $filename;
+        }
+        if($req->hasFile('akta')){
+            $extension = $req->file('akta')->extension();
+            $filename = 'akta_laporan'.time().'.'. $extension;
+            $req->file('akta')->storeAs('public/akta_laporan', $filename);
+            $laporan->akta = $filename;
+        }
+        if($req->hasFile('kk')){
+            $extension = $req->file('kk')->extension();
+            $filename = 'kk_laporan'.time().'.'. $extension;
+            $req->file('kk')->storeAs('public/kk_laporan', $filename);
+            $laporan->kk = $filename;
+        }
+        if($req->hasFile('paspoto')){
+            $extension = $req->file('paspoto')->extension();
+            $filename = 'paspoto_laporan'.time().'.'. $extension;
+            $req->file('paspoto')->storeAs('public/paspoto_laporan', $filename);
+            $laporan->paspoto = $filename;
+        }
 
         $laporan->save();
 

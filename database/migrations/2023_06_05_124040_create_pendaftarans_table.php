@@ -41,6 +41,12 @@ class CreatePendaftaransTable extends Migration
             $table->string('pendidikan_Ibu');
             $table->string('pekerjaan_Ibu');
             $table->string('penghasilan_Ibu');
+
+            $table->string('ijazah')->nullable();
+            $table->string('akta')->nullable();
+            $table->string('kk')->nullable();
+            $table->string('paspoto')->nullable();
+
             $table->string('status')->default('Diproses');
             $table->foreignId('users_id')->constrained();
             $table->timestamps();

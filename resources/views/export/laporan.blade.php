@@ -60,6 +60,10 @@
                     <td>Pekerjaan Ibu</td>
                     <td>Penghasilan Ibu</td>
                     <td>Status</td>
+                    <td>Ijazah</td>
+                    <td>Akta</td>
+                    <td>KK</td>
+                    <td>Paspoto</td>
                     <td>Dibuat</td>
                </tr>
           </thead>
@@ -67,10 +71,10 @@
                @foreach($laporan as $laporans)
                     <tr>
                          <td>{{$loop->iteration}}</td>
-                         <td>{{$laporans->id}}</td>
+                         <td>{{$laporans->id_pendaftaran}}</td>
                          <td>{{$laporans->nama}}</td>
-                         <td>{{$laporans->tempat_lahir}}</td>
-                         <td>{{$laporans->tanggal_lahir}}</td>
+                         <td>{{$laporans->tempat_Lahir}}</td>
+                         <td>{{$laporans->tanggal_Lahir}}</td>
                          <td>{{$laporans->jenis_Kelamin}}</td>
                          <td>{{$laporans->alamat}}</td>
                          <td>{{$laporans->kode_Pos}}</td>
@@ -93,6 +97,34 @@
                          <td>{{$laporans->pekerjaan_Ibu}}</td>
                          <td>{{$laporans->penghasilan_Ibu}}</td>
                          <td>{{$laporans->status}}</td>
+                         <td>
+                              @if($laporans->ijazah !== null)
+                                   [Ada]
+                              @else
+                                   [Tidak Ada]
+                              @endif
+                         </td>
+                         <td>
+                              @if($laporans->akta !== null)
+                                   [Ada]
+                              @else
+                                   [Tidak Ada]
+                              @endif
+                         </td>
+                         <td>
+                              @if($laporans->kk !== null)
+                                   [Ada]
+                              @else
+                                   [Tidak Ada]
+                              @endif
+                         </td>
+                         <td>
+                              @if($laporans->paspoto !== null)
+                                   [Ada]
+                              @else
+                                   [Tidak Ada]
+                              @endif
+                         </td>
                          <td>{{$laporans->created_at}}</td>
                     </tr>
                @endforeach

@@ -14,7 +14,7 @@ $params_id = null;
 <div class="container-fluid">
     <div class="card card-default">
         <div class="d-flex">
-            <div class="card-body col-md-4">
+            <div class="card-body col-md-6">
                 @if($jumlahData == 0)
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Daftar
@@ -53,7 +53,7 @@ $params_id = null;
                     @endforeach
                 </div>
             </div>
-            <div class="card-body col-md-4">
+            <div class="card-body col-md-6">
                 <h3 class="m-1 mb-3" >Data Lainnya</h3>
                 <div class="table-responsive">
                     @foreach($ambilData as $pendaftarans)
@@ -85,7 +85,7 @@ $params_id = null;
         </div>
 
         <div class="d-flex">
-            <div class="card-body col-md-4">
+            <div class="card-body col-md-6">
                 <h3 class="m-1 mb-3" >Data Ayah</h3>
                 <div class="table-responsive">
                     @foreach($ambilData as $pendaftarans)
@@ -118,7 +118,7 @@ $params_id = null;
                     @endforeach
                 </div>
             </div>
-            <div class="card-body col-md-4">
+            <div class="card-body col-md-6">
                 <h3 class="m-1 mb-3" >Data Ibu</h3>
                 <div class="table-responsive">
                     @foreach($ambilData as $pendaftarans)
@@ -146,6 +146,63 @@ $params_id = null;
                         <tr>
                             <td>Penghasilan</td>
                             <td>{{$pendaftarans->penghasilan_Ibu}}</td>
+                        </tr>
+                    </table>
+                    @endforeach
+                </div>
+            </div>
+            <div class="card-body col-md-12">
+                <h3 class="m-1 mb-3" >Data File Dokumen</h3>
+                <div class="table-responsive">
+                    @foreach($ambilData as $pendaftarans)
+                    <table id="table-data" class="table table-striped">
+                        <tr>
+                            <td>
+                                Ijazah
+                            </td>
+                            <td>
+                                @if($pendaftarans->ijazah !== null)
+                                    <img src="{{asset('storage/ijazah_pendaftar/'.$pendaftarans->ijazah)}}" width="100px">
+                                @else
+                                        [Gambar Tidak Tersedia]
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Akta Kelahiran
+                            </td>
+                            <td>
+                                @if($pendaftarans->akta !== null)
+                                    <img src="{{asset('storage/akta_pendaftar/'.$pendaftarans->akta)}}" width="100px">
+                                @else
+                                        [Gambar Tidak Tersedia]
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Kk
+                            </td>
+                            <td>
+                                @if($pendaftarans->kk !== null)
+                                    <img src="{{asset('storage/kk_pendaftar/'.$pendaftarans->kk)}}" width="100px">
+                                @else
+                                        [Gambar Tidak Tersedia]
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Pas Photo
+                            </td>
+                            <td>
+                                @if($pendaftarans->paspoto !== null)
+                                    <img src="{{asset('storage/paspoto_pendaftar/'.$pendaftarans->paspoto)}}" width="100px">
+                                @else
+                                        [Gambar Tidak Tersedia]
+                                @endif
+                            </td>
                         </tr>
                     </table>
                     @endforeach
@@ -254,7 +311,7 @@ $params_id = null;
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="tahunLahir_Ayah">Tahun Lahir Ayah</label>
-                                <input type="text" class="form-control" name="tahunLahir_Ayah" id="tahunLahir_Ayah" required/>
+                                <input type="date" class="form-control" name="tahunLahir_Ayah" id="tahunLahir_Ayah" required/>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="pendidikan_Ayah">Pendidikan Terakhir Ayah</label>
@@ -308,7 +365,7 @@ $params_id = null;
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="tahunLahir_Ibu">Tahun Lahir Ibu</label>
-                                <input type="text" class="form-control" name="tahunLahir_Ibu" id="tahunLahir_Ibu" required/>
+                                <input type="date" class="form-control" name="tahunLahir_Ibu" id="tahunLahir_Ibu" required/>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="pendidikan_Ibu">Pendidikan Terakhir Ibu</label>
@@ -348,6 +405,25 @@ $params_id = null;
                                     <option value="4.000.000 - 5.000.000">4.000.000 - 5.000.000</option>
                                     <option value="Diatas 5.000.000">Diatas 5.000.000</option>
                                 </select>
+                            </div>
+                        </div>
+                        <h5>Poto File Dokumen</h5>
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label for="ijazah">Poto Ijazah</label>
+                                <input type="file" class="form-control" name="ijazah" id="ijazah" required/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="akta">Poto Akta</label>
+                                <input type="file" class="form-control" name="akta" id="akta" required/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="kk">Poto Kartu Keluarga</label>
+                                <input type="file" class="form-control" name="kk" id="kk" required/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="paspoto">Pas Poto</label>
+                                <input type="file" class="form-control" name="paspoto" id="paspoto" required/>
                             </div>
                         </div>
                         <div class="modal-footer">
