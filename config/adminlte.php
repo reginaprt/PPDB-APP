@@ -291,31 +291,33 @@ return [
 
     'menu' => [
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        
+        // [
+        //     'type' => 'sidebar-menu-search',
+        //     'text' => 'search',
+        // ],
+        // [
+        //     'text' => 'blog',
+        //     'url'  => 'admin/blog',
+        //     'can'  => 'manage-blog',
+        // ],
         [
             'text' => 'Beranda',
             'url'  => 'home',
             'icon' => 'fas fa-fw fa-home',
         ],
-        [
-            'text' => 'Kelola Informasi',
-            'url'  => 'kelolaInformasi',
-            'icon' => 'fas fa-fw fa-info',
-        ],
+        ['header' => 'PENDAFTARAN'],
         [
             'text' => 'Pendaftaran',
             'url'  => 'pendaftaran',
             'icon' => 'fas fa-fw fa-book',
         ],
+        ['header' => 'KELOLA PENDAFTARAN'],
+        // [
+        //     'text' => 'Kelola Informasi',
+        //     'url'  => 'kelolaInformasi',
+        //     'icon' => 'fas fa-fw fa-info',
+        //     'roles_id' => 'User',
+        // ],
         [
             'text' => 'Kelola Pendaftaran',
             'url'  => 'admin/kelolaPendaftaran',
