@@ -346,8 +346,8 @@ $params_id = null;
                                     <option value=""></option>
                                     <option value="0 - 1.000.000">0 - 1.000.000</option>
                                     <option value="1.000.000 - 2.000.000">1.000.000 - 2.000.000</option>
-                                    <option value=".000.000 - 3.000.000">2.000.000 - 3.000.000</option>
-                                    <option value=".000.000 - 4.000.000">3.000.000 - 4.000.000</option>
+                                    <option value="2.000.000 - 3.000.000">2.000.000 - 3.000.000</option>
+                                    <option value="3.000.000 - 4.000.000">3.000.000 - 4.000.000</option>
                                     <option value="4.000.000 - 5.000.000">4.000.000 - 5.000.000</option>
                                     <option value="Diatas 5.000.000">Diatas 5.000.000</option>
                                 </select>
@@ -400,8 +400,8 @@ $params_id = null;
                                     <option value=""></option>
                                     <option value="0 - 1.000.000">0 - 1.000.000</option>
                                     <option value="1.000.000 - 2.000.000">1.000.000 - 2.000.000</option>
-                                    <option value=".000.000 - 3.000.000">2.000.000 - 3.000.000</option>
-                                    <option value=".000.000 - 4.000.000">3.000.000 - 4.000.000</option>
+                                    <option value="2.000.000 - 3.000.000">2.000.000 - 3.000.000</option>
+                                    <option value="3.000.000 - 4.000.000">3.000.000 - 4.000.000</option>
                                     <option value="4.000.000 - 5.000.000">4.000.000 - 5.000.000</option>
                                     <option value="Diatas 5.000.000">Diatas 5.000.000</option>
                                 </select>

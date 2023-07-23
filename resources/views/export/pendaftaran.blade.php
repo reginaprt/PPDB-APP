@@ -2,119 +2,93 @@
 <head>
     <title> Laporan Data Petugas </title>
     <style>
-        .text-center h5, h3, h6 {
-            margin-top: -10px;
+        .text-center h5, h3, h6, h1 {
+            margin-top: -25px;
             text-align: center;
         }
-        #table-data td{
-            border: 1px solid #000000;
-            padding: 8px;
-        }
-        * {
-        box-sizing: border-box;
-        }
-
-        .row {
-        margin-left:-5px;
-        margin-right:-5px;
-        }
-
-        .column {
-        float: left;
-        width: 50%;
-        padding: 5px;
-        }
-
-        /* Clearfix (clear floats) */
-        .row::after {
-        content: "";
-        clear: both;
-        display: table;
-        }
-
-        table {
-        border-collapse: collapse;
-        border-spacing: 0;
-        width: 100%;
-        border: 1px solid #ddd;
-        }
-
-        th, td {
-        text-align: left;
-        padding: 16px;
-        }
-
-        tr:nth-child(even) {
-        background-color: #f2f2f2;
+        td {
+            padding: 1px;
+            padding-right: 5px;
         }
 
     </style>
 </head>
 <body>
     <div class="text-center">
-        <h5 class="m-1 mb-3" >KARTU PERSERNA</h5>
         <h3 class="m-1 mb-3" >PENERIMAAN SISWA BARU</h3>
-        <h3 class="m-1 mb-3" >SEKOLAH DASAR NEGERI SIMPANG 2</h3>
+        <h1 class="m-1 mb-3" >SEKOLAH DASAR NEGERI SIMPANG 2</h1>
         <h6 class="m-1 mb-3" >Jl. Raya Sindang Barang, Muaracikadu, Kec. Sindangbarang, Kabupaten Cianjur, Jawa Barat 43272</h6>
+        <h6 class="m-1 mb-3" >Email : sdn-simmpang2@gmail.com</h6>
     </div>
     <hr>
     <div class="row">
         <div class="column">
-            <h2 class="m-1 mb-3" >Identitas Siswa</h2>
+            <h4 class="m-1 mb-3" style="text-align: center;" >FORMULIR PENERIMAAN SISWA BARU TAHUN 2023</h4>
             <div class="table-responsive">
                 <table id="table-data" class="table table-striped">
                     <tr>
-                        <td>No Pendaftaran</td>
+                        <td>1. No Pendaftaran</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->id}}</td>
                     </tr>
                     <tr>
-                        <td>Nama</td>
+                        <td>2. Nama</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->nama}}</td>
                     </tr>
                     <tr>
-                        <td>Tempat Lahir</td>
+                        <td>3. Tempat Lahir</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->tempat_Lahir}}</td>
                     </tr>
                     <tr>
-                        <td>Tanggal Lahir</td>
+                        <td>4. Tanggal Lahir</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->tanggal_Lahir}}</td>
                     </tr>
                     <tr>
-                        <td>Agama</td>
+                        <td>5. Agama</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->agama}}</td>
                     </tr>
                     <tr>
-                        <td>Kewarganegaraan</td>
+                        <td>6. Kewarganegaraan</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->kewarganegaraan}}</td>
                     </tr>
-                </table>
+                {{-- </table>
             </div>
         </div>
         <div class="column">
             <h2 class="m-1 mb-3" >Data Lainnya</h2>
             <div class="table-responsive">
-                <table id="table-data" class="table table-striped">
+                <table  class="table table-striped"> --}}
                     <tr>
-                        <td>Berat Badan</td>
+                        <td>7. Berat Badan</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->berat_Badan}}</td>
                     </tr>
                     <tr>
-                        <td>Tinggi Badan</td>
+                        <td>8. Tinggi Badan</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->tinggi_Badan}}</td>
                     </tr>
                     <tr>
-                        <td>Anak Ke</td>
+                        <td>9. Anak Ke</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->anak_Keberapa}}</td>
                     </tr>
                     <tr>
-                        <td>Kode Pos</td>
+                        <td>10. Kode Pos</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->kode_Pos}}</td>
                     </tr>
                     <tr>
-                        <td>Berkebutuhan Khusus</td>
+                        <td>11. Berkebutuhan Khusus</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->berkebutuhan_Khusus}}</td>
                     </tr>
-                </table>
+                {{-- </table>
             </div>
         </div>
     </div>
@@ -123,88 +97,108 @@
         <div class="column">
             <h2 class="m-1 mb-3" >Data Ayah</h2>
             <div class="table-responsive">
-                <table id="table-data" class="table table-striped">
+                <table id="table-data" class="table table-striped"> --}}
+                    <tr><p>Data Ayah</p></tr>
                     <tr>
-                        <td>Nama</td>
+                        <td>12. Nama</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->nama_Ayah}}</td>
                     </tr>
                     <tr>
-                        <td>NIK</td>
+                        <td>13. NIK</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->nik_Ayah}}</td>
                     </tr>
                     <tr>
-                        <td>Tahun Lahir</td>
+                        <td>14. Tahun Lahir</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->tahunLahir_Ayah}}</td>
                     </tr>
                     <tr>
-                        <td>Pendidikan</td>
+                        <td>15. Pendidikan</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->pendidikan_Ayah}}</td>
                     </tr>
                     <tr>
-                        <td>Pekerjaan</td>
+                        <td>16. Pekerjaan</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->pekerjaan_Ayah}}</td>
                     </tr>
                     <tr>
-                        <td>Penghasilan</td>
+                        <td>17. Penghasilan</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->penghasilan_Ayah}}</td>
                     </tr>
-                </table>
+                {{-- </table>
             </div>
         </div>
         <div class="column">
             <h2 class="m-1 mb-3" >Data Ibu</h2>
             <div class="table-responsive">
-                <table id="table-data" class="table table-striped">
+                <table id="table-data" class="table table-striped"> --}}
+                    <tr><p>Data Ayah</p></tr>
                     <tr>
                         <td>Nama</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->nama_Ibu}}</td>
                     </tr>
                     <tr>
-                        <td>NIK</td>
+                        <td>18. NIK</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->nik_Ibu}}</td>
                     </tr>
                     <tr>
-                        <td>Tahun Lahir</td>
+                        <td>19. Tahun Lahir</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->tahunLahir_Ibu}}</td>
                     </tr>
                     <tr>
-                        <td>Pendidikan</td>
+                        <td>20. Pendidikan</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->pendidikan_Ibu}}</td>
                     </tr>
                     <tr>
-                        <td>Pekerjaan</td>
+                        <td>21. Pekerjaan</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->pekerjaan_Ibu}}</td>
                     </tr>
                     <tr>
-                        <td>Penghasilan</td>
+                        <td>22. Penghasilan</td>
+                        <td>:</td>
                         <td>{{$pendaftaran->penghasilan_Ibu}}</td>
                     </tr>
-                </table>
+                {{-- </table>
             </div>
         </div>
     </div>
     <div class="column">
         <h2 class="m-1 mb-3" >Status</h2>
         <div class="table-responsive">
-            <table id="table-data" class="table table-striped">
+            <table id="table-data" class="table table-striped"> --}}
+            <tr><p>Data Lainnya</p></tr>
                 <tr>
-                    <td>Status</td>
+                    <td>23. Status</td>
+                    <td>:</td>
                     <td>{{$pendaftaran->status}}</td>
                 </tr>
                 <tr>
-                    <td>Ijazah Terakhir</td>
+                    <td>24. Ijazah Terakhir</td>
+                    <td>:</td>
                     <td>{{$pendaftaran->status}}</td>
                 </tr>
                 <tr>
-                    <td>Akta Kelahiran</td>
+                    <td>25. Akta Kelahiran</td>
+                    <td>:</td>
                     <td>{{$pendaftaran->status}}</td>
                 </tr>
                 <tr>
-                    <td>Kartu Keluarga</td>
+                    <td>26. Kartu Keluarga</td>
+                    <td>:</td>
                     <td>{{$pendaftaran->status}}</td>
                 </tr>
                 <tr>
-                    <td>KTP</td>
+                    <td>27. KTP</td>
+                    <td>:</td>
                     <td>{{$pendaftaran->status}}</td>
                 </tr>
             </table>
