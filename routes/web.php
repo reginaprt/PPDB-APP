@@ -59,7 +59,9 @@ Route::middleware('is_admin')->group(function () {
 
     // Laporan Pendaftaran -----------------------------------------------------------------------------------------------------------------
     Route::get('/Laporan', [LaporanController::class, 'index'])->name('Laporan');
-    Route::get('/laporan/export', [LaporanController::class, 'exportLaporan']);
+    Route::get('/laporan/export/all', [LaporanController::class, 'exportLaporanAll']);
+    Route::get('/laporan/export/lulus', [LaporanController::class, 'exportLaporanLulus']);
+    Route::get('/laporan/export/tdklulus', [LaporanController::class, 'exportLaporanTdkLulus']);
     Route::get('/laporan/export/excel', [LaporanController::class, 'export']);
 
 });

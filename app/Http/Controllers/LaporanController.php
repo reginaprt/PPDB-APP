@@ -18,8 +18,20 @@ class LaporanController extends Controller
         $Laporan = Laporan::All();
         return view('Laporan', compact('Laporan'));
     }
-    public function exportLaporan(){
+    public function exportLaporanAll(){
         $laporan = Laporan::all();
+        view()->share('laporan', $laporan);
+        $pdf = PDF::loadview('export.laporan')->setPaper(array(0, 0, 1080, 1920), 'landscape');
+        return $pdf->download('data_laporan.pdf');
+    }
+    public function exportLaporanLulus(){
+        $laporan = Laporan::where('status', 'Lulus')->get();
+        view()->share('laporan', $laporan);
+        $pdf = PDF::loadview('export.laporan')->setPaper(array(0, 0, 1080, 1920), 'landscape');
+        return $pdf->download('data_laporan.pdf');
+    }
+    public function exportLaporanTdkLulus(){
+        $laporan = Laporan::where('status', 'Tidak Lulus')->get();
         view()->share('laporan', $laporan);
         $pdf = PDF::loadview('export.laporan')->setPaper(array(0, 0, 1080, 1920), 'landscape');
         return $pdf->download('data_laporan.pdf');

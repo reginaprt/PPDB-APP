@@ -14,7 +14,16 @@
                 <h3>Pendaftaran Siswa Baru SDN Simpang 2</h3>
                 <div class="d-flex m-1">
                     <a type="button" class="btn btn-success m-1" href="/laporan/export/excel">Export Excel</a>
-                    <a type="button" class="btn btn-danger m-1" href="/laporan/export">Export PDF</a>
+                    <div class="dropdown">
+                        <button class="btn btn-danger dropdown-toggle m-1" type="button" data-toggle="dropdown" aria-expanded="false">
+                            Export PDF
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/laporan/export/lulus">Lulus</a>
+                            <a class="dropdown-item" href="/laporan/export/tdklulus">Tidak Lulus</a>
+                            <a class="dropdown-item" href="/laporan/export/all">Semua Data</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
