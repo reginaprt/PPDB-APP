@@ -13,7 +13,7 @@
             <div class="d-flex justify-content-between">
                 <h3>Pendaftaran Siswa Baru SDN Simpang 2</h3>
                 <div class="d-flex m-1">
-                    <a type="button" class="btn btn-success m-1" href="/laporan/export/excel">Export Excel</a>
+                    {{-- <a type="button" class="btn btn-success m-1" href="/users/export/">Export Excel</a> --}}
                     <div class="dropdown">
                         <button class="btn btn-danger dropdown-toggle m-1" type="button" data-toggle="dropdown" aria-expanded="false">
                             Export PDF

@@ -63,5 +63,6 @@ Route::middleware('is_admin')->group(function () {
     Route::get('/laporan/export/lulus', [LaporanController::class, 'exportLaporanLulus']);
     Route::get('/laporan/export/tdklulus', [LaporanController::class, 'exportLaporanTdkLulus']);
     Route::get('/laporan/export/excel', [LaporanController::class, 'export']);
+    Route::get('users/export/', [LaporanController::class, 'export']);
 
 });

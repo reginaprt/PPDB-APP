@@ -49,24 +49,29 @@
                                     <a class="btn btn-sm btn-danger">{{$pendaftarans->status}}</a>
                                 @endif
                             </td>
+                            @if ($pendaftarans->status == 'Diproses')
                             <td>
                                 <div class="btn-group" role="group" aria-lable="Basic example">
                                     <a type="button" class="btn btn-sm btn-success" href="/admin/kelolaPendaftaran/terima/{{$pendaftarans->id}}">Terima</a>
                                     <a type="button" class="btn btn-sm btn-danger" href="/admin/kelolaPendaftaran/tolak/{{$pendaftarans->id}}">Tolak</a>
                                 </div>
                             </td>
+                            @endif
+                            @if ($pendaftarans->status == 'Lulus' || $pendaftarans->status == 'Tidak Lulus')
+                            <td>
+                                <a class="btn btn-sm btn-warning">Sudah Diverifikasi</a>
+                            </td>
+                            @endif
                             <td>
                                 <div class="btn-group" role="group" aria-lable="Basic example">
                                     <button type="button" id="btn-edit" class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModal" data-id="{{ $pendaftarans->id }}">Lihat</button>
                                     <a type="btn btn-sm btn-danger btn-rounded" class="btn btn-sm btn-danger" href="/admin/kelolaPendaftaran/delete/{{$pendaftarans->id}}">Hapus</a>
                                 </div>
                             </td>
-                            @foreach ($kelolaPendaftaran as $export)
                             <td class="btn-group">
-                                <a type="button" class="btn btn-sm btn-success" href="#">Excel</a>
+                                {{-- <a type="button" class="btn btn-sm btn-success" href="#">Excel</a> --}}
                                 <a type="button" class="btn btn-sm btn-danger" href="/admin/kelolaPendaftaran/export/{{$pendaftarans->id}}">PDF</a>
                             </td>
-                            @endforeach
                         </tr>
                     @endforeach
                 </tbody>
