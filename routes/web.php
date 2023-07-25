@@ -46,6 +46,7 @@ Route::middleware('is_admin')->group(function () {
 
     // Kelola Pendaftaran ------------------------------------------------------------------------------------------------------------------
     Route::get('admin/kelolaPendaftaran', [kelolaPendaftaranController::class, 'index'])->name('kelolaPendaftaran');
+    Route::post('admin/kelolaPendaftaran/add', [kelolaPendaftaranController::class, 'tambah'])->name('tambahPendaftaran');
     Route::patch('admin/kelolaPendaftaran/edit', [kelolaPendaftaranController::class, 'edit'])->name('editPendaftaran');
     Route::get('admin/kelolaPendaftaran/delete/{id}', [kelolaPendaftaranController::class,'delete'])->name('deletePendaftaran');
     Route::get('admin/ajaxadmin/dataPendaftar/{id}', [kelolaPendaftaranController::class, 'getDataPendaftar']);

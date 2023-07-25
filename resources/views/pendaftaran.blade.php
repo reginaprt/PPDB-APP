@@ -15,10 +15,15 @@ $params_id = null;
     <div class="card card-default">
         <div class="d-flex">
             <div class="card-body col-md-6">
-                @if($jumlahData == 0)
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        Daftar
-                    </button>
+                @if (Auth::user()->roles_id === 2)
+                    @if($jumlahData == 0)
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Daftar
+                        </button>
+                    @endif
+                @endif
+                @if (Auth::user()->roles_id === 1)
+                    <h3 class="m-1 mb-3" >Admin Tidak Bisa Melakukan Pendafratan</h3>
                 @endif
                 @if($jumlahData == 1)
                 <h3 class="m-1 mb-3" >Identitas Siswa</h3>
