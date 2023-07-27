@@ -59,8 +59,6 @@ class kelolaPendaftarancontroller extends Controller
         $user->password = Hash::make($req->get('password'));
         $user->roles_id = 2;
 
-        $latestData = User::latest('id')->first();
-
         $user->save();
 
         $pendaftaran = new Pendaftaran;
@@ -120,103 +118,76 @@ class kelolaPendaftarancontroller extends Controller
 
         $pendaftaran->save();
 
-        $laporan = new Laporan;
+        // $latestData = Pendaftaran::latest('id')->first();
 
-        $laporan->id_pendaftaran = $req->get('id');
-        $laporan->users_id = $user->id;
-        $laporan->nama = $req->get('nama');
-        $laporan->tanggal_Lahir = $req->get('tanggal_Lahir');
-        $laporan->tempat_Lahir = $req->get('tempat_Lahir');
-        $laporan->agama = $req->get('agama');
-        $laporan->jenis_Kelamin = $req->get('jenis_kelamin');
-        $laporan->alamat = $req->get('alamat');
-        $laporan->kode_Pos = $req->get('kode_Pos');
-        $laporan->berat_Badan = $req->get('berat_Badan');
-        $laporan->tinggi_Badan = $req->get('tinggi_Badan');
-        $laporan->anak_Keberapa = $req->get('anak_Keberapa');
-        $laporan->kewarganegaraan = $req->get('kewarganegaraan');
-        $laporan->berkebutuhan_Khusus = $req->get('berkebutuhan_Khusus');
+        // $laporan = new Laporan;
 
-        $laporan->nama_Ayah = $req->get('nama_Ayah');
-        $laporan->nik_Ayah = $req->get('nik_Ayah');
-        $laporan->tahunLahir_Ayah = $req->get('tahunLahir_Ayah');
-        $laporan->pendidikan_Ayah = $req->get('pendidikan_Ayah');
-        $laporan->pekerjaan_Ayah = $req->get('pekerjaan_Ayah');
-        $laporan->penghasilan_Ayah = $req->get('penghasilan_Ayah');
+        // $laporan->id_pendaftaran = $latestData->id;
+        // $laporan->users_id = $user->id;
+        // $laporan->nama = $req->get('nama');
+        // $laporan->tanggal_Lahir = $req->get('tanggal_Lahir');
+        // $laporan->tempat_Lahir = $req->get('tempat_Lahir');
+        // $laporan->agama = $req->get('agama');
+        // $laporan->jenis_Kelamin = $req->get('jenis_kelamin');
+        // $laporan->alamat = $req->get('alamat');
+        // $laporan->kode_Pos = $req->get('kode_Pos');
+        // $laporan->berat_Badan = $req->get('berat_Badan');
+        // $laporan->tinggi_Badan = $req->get('tinggi_Badan');
+        // $laporan->anak_Keberapa = $req->get('anak_Keberapa');
+        // $laporan->kewarganegaraan = $req->get('kewarganegaraan');
+        // $laporan->berkebutuhan_Khusus = $req->get('berkebutuhan_Khusus');
 
-        $laporan->nama_Ibu = $req->get('nama_Ibu');
-        $laporan->nik_Ibu = $req->get('nik_Ibu');
-        $laporan->tahunLahir_Ibu = $req->get('tahunLahir_Ibu');
-        $laporan->pendidikan_Ibu = $req->get('pendidikan_Ibu');
-        $laporan->pekerjaan_Ibu = $req->get('pekerjaan_Ibu');
-        $laporan->penghasilan_Ibu = $req->get('penghasilan_Ibu');
+        // $laporan->nama_Ayah = $req->get('nama_Ayah');
+        // $laporan->nik_Ayah = $req->get('nik_Ayah');
+        // $laporan->tahunLahir_Ayah = $req->get('tahunLahir_Ayah');
+        // $laporan->pendidikan_Ayah = $req->get('pendidikan_Ayah');
+        // $laporan->pekerjaan_Ayah = $req->get('pekerjaan_Ayah');
+        // $laporan->penghasilan_Ayah = $req->get('penghasilan_Ayah');
 
-        if($req->hasFile('ijazah')){
-            $extension = $req->file('ijazah')->extension();
-            $filename = 'ijazah_laporan'.time().'.'. $extension;
-            $req->file('ijazah')->storeAs('public/ijazah_laporan', $filename);
-            $laporan->ijazah = $filename;
-        }
-        if($req->hasFile('akta')){
-            $extension = $req->file('akta')->extension();
-            $filename = 'akta_laporan'.time().'.'. $extension;
-            $req->file('akta')->storeAs('public/akta_laporan', $filename);
-            $laporan->akta = $filename;
-        }
-        if($req->hasFile('kk')){
-            $extension = $req->file('kk')->extension();
-            $filename = 'kk_laporan'.time().'.'. $extension;
-            $req->file('kk')->storeAs('public/kk_laporan', $filename);
-            $laporan->kk = $filename;
-        }
-        if($req->hasFile('paspoto')){
-            $extension = $req->file('paspoto')->extension();
-            $filename = 'paspoto_laporan'.time().'.'. $extension;
-            $req->file('paspoto')->storeAs('public/paspoto_laporan', $filename);
-            $laporan->paspoto = $filename;
-        }
+        // $laporan->nama_Ibu = $req->get('nama_Ibu');
+        // $laporan->nik_Ibu = $req->get('nik_Ibu');
+        // $laporan->tahunLahir_Ibu = $req->get('tahunLahir_Ibu');
+        // $laporan->pendidikan_Ibu = $req->get('pendidikan_Ibu');
+        // $laporan->pekerjaan_Ibu = $req->get('pekerjaan_Ibu');
+        // $laporan->penghasilan_Ibu = $req->get('penghasilan_Ibu');
 
-        $laporan->save();
+        // if($req->hasFile('ijazah')){
+        //     $extension = $req->file('ijazah')->extension();
+        //     $filename = 'ijazah_laporan'.time().'.'. $extension;
+        //     $req->file('ijazah')->storeAs('public/ijazah_laporan', $filename);
+        //     $laporan->ijazah = $filename;
+        // }
+        // if($req->hasFile('akta')){
+        //     $extension = $req->file('akta')->extension();
+        //     $filename = 'akta_laporan'.time().'.'. $extension;
+        //     $req->file('akta')->storeAs('public/akta_laporan', $filename);
+        //     $laporan->akta = $filename;
+        // }
+        // if($req->hasFile('kk')){
+        //     $extension = $req->file('kk')->extension();
+        //     $filename = 'kk_laporan'.time().'.'. $extension;
+        //     $req->file('kk')->storeAs('public/kk_laporan', $filename);
+        //     $laporan->kk = $filename;
+        // }
+        // if($req->hasFile('paspoto')){
+        //     $extension = $req->file('paspoto')->extension();
+        //     $filename = 'paspoto_laporan'.time().'.'. $extension;
+        //     $req->file('paspoto')->storeAs('public/paspoto_laporan', $filename);
+        //     $laporan->paspoto = $filename;
+        // }
+
+        // $laporan->save();
 
         $notification = array(
             'message' => 'Pendaftaran berhasil',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('pendaftaran')->with($notification);
+        return redirect()->route('kelolaPendaftaran')->with($notification);
     }
 
     public function edit(Request $req) {
         $kelolaPendaftaran = Pendaftaran::find($req->get('id'));
-
-        // $validate = $req->validate([
-        //     'nama' => 'required',
-        //     'agama' => 'required',
-        //     'tempat_Lahir' => 'required',
-        //     'tanggal_Lahir' => 'required',
-        //     'jenis_Kelamin' => 'required',
-        //     'alamat' => 'required',
-        //     'kode_Pos' => 'required',
-        //     'berat_Badan' => 'required',
-        //     'tinggi_Badan' => 'required',
-        //     'anak_Keberapa' => 'required',
-        //     'kewarganegaraan' => 'required',
-        //     'berkebutuhan_Khusus' => 'required',
-
-        //     'nama_Ayah' => 'required',
-        //     'nik_Ayah' => 'required',
-        //     'tahunLahir_Ayah' => 'required',
-        //     'pendidikan_Ayah' => 'required',
-        //     'pekerjaan_Ayah' => 'required',
-        //     'penghasilan_Ayah' => 'required',
-
-        //     'nama_Ibu' => 'required',
-        //     'nik_Ibu' => 'required',
-        //     'tahunLahir_Ibu' => 'required',
-        //     'pendidikan_Ibu' => 'required',
-        //     'pekerjaan_Ibu' => 'required',
-        //     'penghasilan_Ibu' => 'required',
-        // ]);
 
         $kelolaPendaftaran->nama = $req->get('nama');
         $kelolaPendaftaran->tanggal_Lahir = $req->get('tanggal_Lahir');
@@ -246,6 +217,61 @@ class kelolaPendaftarancontroller extends Controller
         $kelolaPendaftaran->penghasilan_Ibu = $req->get('penghasilan_Ibu');
 
         $kelolaPendaftaran->save();
+
+        $get = Pendaftaran::find($req->get('id'));
+
+        $nama = $req->get('nama');
+        $tanggal_Lahir = $req->get('tanggal_Lahir');
+        $tempat_Lahir = $req->get('tempat_Lahir');
+        $agama = $req->get('agama');
+        $jenis_Kelamin = $req->get('jenis_kelamin');
+        $alamat = $req->get('alamat');
+        $kode_Pos = $req->get('kode_Pos');
+        $berat_Badan = $req->get('berat_Badan');
+        $tinggi_Badan = $req->get('tinggi_Badan');
+        $anak_Keberapa = $req->get('anak_Keberapa');
+        $kewarganegaraan = $req->get('kewarganegaraan');
+        $berkebutuhan_Khusus = $req->get('berkebutuhan_Khusus');
+
+        $nama_Ayah = $req->get('nama_Ayah');
+        $nik_Ayah = $req->get('nik_Ayah');
+        $tahunLahir_Ayah = $req->get('tahunLahir_Ayah');
+        $pendidikan_Ayah = $req->get('pendidikan_Ayah');
+        $pekerjaan_Ayah = $req->get('pekerjaan_Ayah');
+        $penghasilan_Ayah = $req->get('penghasilan_Ayah');
+
+        $nama_Ibu = $req->get('nama_Ibu');
+        $nik_Ibu = $req->get('nik_Ibu');
+        $tahunLahir_Ibu = $req->get('tahunLahir_Ibu');
+        $pendidikan_Ibu = $req->get('pendidikan_Ibu');
+        $pekerjaan_Ibu = $req->get('pekerjaan_Ibu');
+        $penghasilan_Ibu = $req->get('penghasilan_Ibu');
+        Laporan::where('id_pendaftaran', $get->id)->update(['nama' => $nama]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['tanggal_Lahir' => $tanggal_Lahir]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['tempat_Lahir' => $tempat_Lahir]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['agama' => $agama]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['jenis_Kelamin' => $jenis_Kelamin]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['alamat' => $alamat]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['kode_Pos' => $kode_Pos]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['berat_Badan' => $berat_Badan]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['tinggi_Badan' => $tinggi_Badan]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['anak_Keberapa' => $anak_Keberapa]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['kewarganegaraan' => $kewarganegaraan]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['berkebutuhan_Khusus' => $berkebutuhan_Khusus]);
+
+        Laporan::where('id_pendaftaran', $get->id)->update(['nama_Ayah' => $nama_Ayah]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['nik_Ayah' => $nik_Ayah]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['tahunLahir_Ayah' => $tahunLahir_Ayah]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['pendidikan_Ayah' => $pendidikan_Ayah]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['pekerjaan_Ayah' => $pekerjaan_Ayah]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['penghasilan_Ayah' => $penghasilan_Ayah]);
+
+        Laporan::where('id_pendaftaran', $get->id)->update(['nama_Ibu' => $nama_Ibu]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['nik_Ibu' => $nik_Ibu]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['tahunLahir_Ibu' => $tahunLahir_Ibu]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['pendidikan_Ibu' => $pendidikan_Ibu]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['pekerjaan_Ibu' => $pekerjaan_Ibu]);
+        Laporan::where('id_pendaftaran', $get->id)->update(['penghasilan_Ibu' => $penghasilan_Ibu]);
 
         $notification = array(
             'message' => 'Pendaftaran berhasil diubah',

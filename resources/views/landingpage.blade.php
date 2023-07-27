@@ -95,7 +95,7 @@
 
         <div class="row gy-4">
           <div class="col-lg-6">
-            <img src="assets/img/about.jpg" class="img-fluid rounded-4 mb-4" alt="">
+            <img src="assets/img/sdd.jpg" class="img-fluid rounded-4 mb-4" alt="">
             <p>SDN Simpang 2 merupakan salah satu SD Negeri yang berada di Kecamatan Sindangbarang, menempati luas seluas 3505 m2. Lokasi SDN Simpang 2 ini terletak di jalan Cisitu Desa Muaracikadu Kecamatan Sindangbarang yang berdiri sejak tahun 1970. SDN Simpang 2 ini memiliki akreditasi B berdasarkan sertifikat 02.00/330/BAP-SM/XI/2017.</p>
           </div>
           <div class="col-lg-6">
@@ -103,7 +103,7 @@
             <p>Fasilitas yang tersedia di SDN Simpang 2 ini menyediakan listrik untuk membantu kegiatan belajar mengajar. Sumber listrik yang digunakan oleh SD NEGERI SIMPANG 2 berasal dari PLN. SD NEGERI SIMPANG 2 dan Wi-fi  internet yang dapat digunakan untuk mendukung kegiatan belajar mengajar menjadi lebih mudah.</p>
 
               <div class="position-relative mt-4">
-                <img src="assets/img/about-2.jpg" class="img-fluid rounded-4" alt="">
+                <img src="assets/img/sdd2.jpg" class="img-fluid rounded-4" alt="">
               </div>
             </div>
           </div>
