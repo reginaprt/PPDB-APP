@@ -29,7 +29,8 @@ class HomeController extends Controller
         $test = $user->id;
         $status = Pendaftaran::where('users_id', $test)->get();
         $status1 = Pendaftaran::where('users_id', $test)->count();
+        $status2 = Pendaftaran::count();
 
-        return view('home', compact('user', 'status','status1'));
+        return view('home', compact('user', 'status','status1','status2'));
     }
 }

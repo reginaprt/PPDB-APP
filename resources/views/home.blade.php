@@ -41,21 +41,26 @@
                         <div class="card-body">
                             <h4 class="mb-0" style>Status</h4>
                             <br>
-                            @if($status1 != null )
-                                @foreach($status as $pendaftarans)
-                                    @if ($pendaftarans->status == 'Diproses')
-                                        <p class="btn btn-warning mt-2" style="margin-bottom: 5px">{{$pendaftarans->status}}</p>
-                                    @endif
-                                    @if ($pendaftarans->status == 'Lulus')
-                                        <p class="btn btn-success mt-2" style="margin-bottom: 5px">{{$pendaftarans->status}}</p>
-                                    @endif
-                                    @if ($pendaftarans->status == 'Tidak Lulus')
-                                        <p class="btn btn-danger mt-2" style="margin-bottom: 5px">{{$pendaftarans->status}}</p>
-                                    @endif
-                                @endforeach
+                            @if (Auth::user()->roles_id === 2)
+                                @if($status1 != null )
+                                    @foreach($status as $pendaftarans)
+                                        @if ($pendaftarans->status == 'Diproses')
+                                            <p class="btn btn-warning mt-2" style="margin-bottom: 5px">{{$pendaftarans->status}}</p>
+                                        @endif
+                                        @if ($pendaftarans->status == 'Lulus')
+                                            <p class="btn btn-success mt-2" style="margin-bottom: 5px">{{$pendaftarans->status}}</p>
+                                        @endif
+                                        @if ($pendaftarans->status == 'Tidak Lulus')
+                                            <p class="btn btn-danger mt-2" style="margin-bottom: 5px">{{$pendaftarans->status}}</p>
+                                        @endif
+                                    @endforeach
+                                @endif
+                                @if($status1 == null )
+                                    <p class="btn btn-info mt-2" style="margin-bottom: 5px">Anda Belum Mendaftar</p>
+                                @endif
                             @endif
-                            @if($status1 == null )
-                                <p class="btn btn-info mt-2" style="margin-bottom: 5px">Anda Belum Mendaftar</p>
+                            @if (Auth::user()->roles_id === 1)
+                                <p class="btn btn-info mt-2" style="margin-bottom: 5px">Jumlah Pendaftar : {{$status2}}</p>
                             @endif
                         </div>
                     </div>
